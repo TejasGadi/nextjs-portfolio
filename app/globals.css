@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -16,18 +16,28 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+html{
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body{
+  background: #0c0c1d;
+  color: lightgray;
+  font-family: 'DM Sans', sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+section{
+  scroll-snap-align: center;
 }
