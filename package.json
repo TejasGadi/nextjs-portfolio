@@ -20,7 +20,8 @@
     "react-multi-carousel": "^2.8.5",
     "react-parallax-tilt": "^1.7.226",
     "sanity": "^3.41.1",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "vercel": "^34.2.0"
   },
   "devDependencies": {
     "postcss": "^8",
