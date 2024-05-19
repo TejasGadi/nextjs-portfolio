@@ -47,7 +47,7 @@ const Contact = ({socials}) => {
         </Item>
         <Item variants={variants}>
           <h2>LinkedIn</h2>
-          <span><Link href={socials[0].linkedin} passHref>{socials[0].linkedin}</Link></span>
+          <span><Link href={socials[0].linkedin} passHref target="_blank">{socials[0].linkedin}</Link></span>
         </Item>
         <Item variants={variants}>
           <h2>Contact No</h2>

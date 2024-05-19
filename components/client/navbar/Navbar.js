@@ -21,9 +21,9 @@ const Navbar = ({socials}) => {
             transition={{duration:0.5}}
         >TEJAS GADI</motion.span>
         <Socials>
-            <Link href={linkedin} passHref><LinkedinIcon size={36} round/></Link>
-            <Link href={github} passHref><GithubIcon size={36} round/></Link>
-            <Link href={email} passHref><EmailIcon size={36} round/></Link>
+            <Link href={linkedin} passHref target="_blank"><LinkedinIcon size={36} round/></Link>
+            <Link href={github} passHref target="_blank"><GithubIcon size={36} round/></Link>
+            <Link href={email} passHref target="_blank"><EmailIcon size={36} round/></Link>
         </Socials>
       </Wrapper>
     </NavBarContainer>
