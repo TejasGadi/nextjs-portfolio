@@ -1,9 +1,16 @@
+"use client"
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import {GithubIcon, LinkedinIcon, EmailIcon, InstagramIcon } from 'next-share';
 import Sidebar from '../sidebar/Sidebar';
+import Link from 'next/link'
 
-const Navbar = () => {
+const Navbar = ({socials}) => {
+
+  const linkedin = socials[0].linkedin;
+  const github = socials[0].github;
+  const email = socials[0].email;
+
   return (
     <NavBarContainer>
       <Sidebar/>
@@ -14,10 +21,9 @@ const Navbar = () => {
             transition={{duration:0.5}}
         >TEJAS GADI</motion.span>
         <Socials>
-            <a href=""><EmailIcon size={36} round/></a>
-            <a href=""><GithubIcon size={36} round/></a>
-            <a href=""><LinkedinIcon size={36} round/></a>
-            <a href=""><InstagramIcon size={36} round/></a>
+            <Link href={linkedin} passHref><LinkedinIcon size={36} round/></Link>
+            <Link href={github} passHref><GithubIcon size={36} round/></Link>
+            <Link href={email} passHref><EmailIcon size={36} round/></Link>
         </Socials>
       </Wrapper>
     </NavBarContainer>

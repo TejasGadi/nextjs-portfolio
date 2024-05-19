@@ -1,7 +1,8 @@
-import { animate } from "framer-motion";
+"use client"
 import styled from "styled-components";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 const variants = {
   initial: {
@@ -18,10 +19,11 @@ const variants = {
   },
 };
 
-const Contact = () => {
+const Contact = ({socials}) => {
   const ref = useRef();
   const inView = useInView(ref);
   const [countAnimated, setCountAnimated] = useState(0);
+  console.log(socials)
 
   useEffect(() => {
     if(inView == true){
@@ -35,20 +37,21 @@ const Contact = () => {
       variants={variants}
       initial="initial"
       whileInView="animate"
+      id="Contact"
     >
       <TextContainer variants={variants}>
         <motion.h1 variants={variants}>Let's work together</motion.h1>
         <Item variants={variants}>
           <h2>Mail</h2>
-          <span>tvgadi2003@gmail.com</span>
+          <span>{socials[0].email}</span>
         </Item>
         <Item variants={variants}>
           <h2>LinkedIn</h2>
-          <span>linkedIn link</span>
+          <span><Link href={socials[0].linkedin} passHref>{socials[0].linkedin}</Link></span>
         </Item>
         <Item variants={variants}>
           <h2>Contact No</h2>
-          <span>+91 9175101275</span>
+          <span>+91 {socials[0].contact}</span>
         </Item>
       </TextContainer>
       <FormContainer variants={variants}>
@@ -97,13 +100,13 @@ const Contact = () => {
   );
 };
 
-const ContactContainer = styled(motion.div)`
-  height: 100%;
+const ContactContainer = styled(motion.section)`
   max-width: 65rem;
   margin: auto;
   display: flex;
   gap: 50px;
   align-items: center;
+  overflow: hidden;
 `;
 
 const TextContainer = styled(motion.div)`

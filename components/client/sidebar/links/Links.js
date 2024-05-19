@@ -1,3 +1,4 @@
+"use client"
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -28,11 +29,11 @@ const itemVariants = {
 const Links = () => {
   const items = [
     "Home",
-    "Skills",
+    "About",
     "Experience",
+    "Skills",
     "Projects",
     "Contact",
-    "About",
   ];
 
   return (

@@ -1,3 +1,4 @@
+"use client"
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import styled from "styled-components";
@@ -17,16 +18,16 @@ const Parallax = ({ type }) => {
       ref={ref}
       style={{
         background:
-          type == "skills"
+          type == "experience"
             ? "linear-gradient(180deg, #111132, #0c0c1d)"
             : "linear-gradient(180deg, #111132, #505064)",
       }}
     >
       <motion.h1 style={{ y: yText }}>
-        {type == "skills" ? "My Skills" : "Projects"}
+        {type == "experience" ? "My Experience" : "Projects"}
       </motion.h1>
       <Mountains></Mountains>
-      {type == "skills" ? (
+      {type == "experience" ? (
         <Planets style={{ y: yBg }}></Planets>
       ) : (
         <Sun style={{ y: yBg }}></Sun>

@@ -1,37 +1,34 @@
-"use client";
 
-import Contact from "@/components/contact/Contact";
-import Hero from "@/components/hero/Hero";
-import Navbar from "@/components/navbar/Navbar";
-import Parallax from "@/components/parallax/Parallax";
-import Projects from "@/components/projects/Projects";
-import Timeline from "@/components/timeline/Timeline";
-import styled from "styled-components";
+import Contact from "@/components/client/contact/Contact";
+import Experience from "@/components/client/experience/Experience";
+import Hero from "@/components/client/hero/Hero";
+import Navbar from "@/components/client/navbar/Navbar";
+import Parallax from "@/components/client/parallax/Parallax";
+import Projects from "@/components/client/projects/Projects";
+import Skills from "@/components/client/skills/Skills";
+import { getAbout, getEducation, getExperience, getProjects, getSkills, getSocials } from "@/sanity/sanity.query";
+import About from "@/components/client/about/About";
 
-export default function Home() {
+export default async function Home() {
+  const experiences = await getExperience();
+  const projects = await getProjects();
+  const skills = await getSkills();
+  const socials = await getSocials();
+  const about = await getAbout();
+  const education = await getEducation();
   return (
-    <Container>
+    <div style={{width: "100vw"}}>
       <section id="Home">
-        <Navbar />
+        <Navbar socials={socials}/>
         <Hero/>
       </section>
-      <section id="Skills"><Parallax type="skills"/></section>
-      <section>Skills</section>
-      <section id="Experience">Experience</section>
+      <About about={about} education={education} socials={socials}/>
+      <section id="Experience"><Parallax type="experience"/></section>
+      <Experience experience_data = {experiences}/>
+      <Skills skills_data={skills}/>
       <section id="Projects"><Parallax type="projects"/></section>
-      <Projects/>
-      <section id="Contact">
-        <Contact/>
-      </section>
-      <section id="About">About</section>
-      <Timeline/>
-    </Container>
+      <Projects projects_data={projects}/>
+      <Contact socials={socials}/>
+    </div>
   );
 }
-
-const Container = styled.div`
-  width: 100vw;
-  section {
-    height: 100vh;
-  }
-`;

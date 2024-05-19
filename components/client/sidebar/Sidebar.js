@@ -1,3 +1,4 @@
+"use client"
 import styled from "styled-components";
 import ToggleButton from "./toggleButton/ToggleButton";
 import Links from "./links/Links";
