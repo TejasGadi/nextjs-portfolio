@@ -22,21 +22,15 @@ const Navbar = ({ socials }) => {
           TEJAS GADI
         </motion.span>
         <Socials>
-          <Link href={linkedin} passHref>
-            <a target="_blank" rel="noopener noreferrer">
-              <LinkedinIcon size={36} round />
-            </a>
-          </Link>
-          <Link href={github} passHref>
-            <a target="_blank" rel="noopener noreferrer">
-              <GithubIcon size={36} round />
-            </a>
-          </Link>
-          <Link href={email} passHref>
-            <a target="_blank" rel="noopener noreferrer">
-              <EmailIcon size={36} round />
-            </a>
-          </Link>
+          <a href={linkedin} target="_blank" rel="noreferrer">
+            <LinkedinIcon size={36} round />
+          </a>
+          <a href={github} target="_blank" rel="noreferrer">
+            <GithubIcon size={36} round />
+          </a>
+          <a href={email} target="_blank" rel="noreferrer">
+            <EmailIcon size={36} round />
+          </a>
         </Socials>
       </Wrapper>
     </NavBarContainer>

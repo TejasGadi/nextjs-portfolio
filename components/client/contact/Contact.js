@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import styled from "styled-components";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -19,15 +19,15 @@ const variants = {
   },
 };
 
-const Contact = ({socials}) => {
+const Contact = ({ socials }) => {
   const ref = useRef();
   const inView = useInView(ref);
   const [countAnimated, setCountAnimated] = useState(0);
-  console.log(socials)
+  console.log(socials);
 
   useEffect(() => {
-    if(inView == true){
-        setCountAnimated(countAnimated + 1);
+    if (inView == true) {
+      setCountAnimated(countAnimated + 1);
     }
   }, [inView]);
 
@@ -47,11 +47,15 @@ const Contact = ({socials}) => {
         </Item>
         <Item variants={variants}>
           <h2>LinkedIn</h2>
-          <span><Link href={socials[0].linkedin} passHref>
-          <a target="_blank" rel="noopener noreferrer">
-            {socials[0].linkedin}
-          </a>
-          </Link></span>
+          <span>
+            <a
+              href={socials[0].linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {socials[0].linkedin}
+            </a>
+          </span>
         </Item>
         <Item variants={variants}>
           <h2>Contact No</h2>
@@ -92,7 +96,11 @@ const Contact = ({socials}) => {
         <motion.form
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={countAnimated < 2? { delay: 4, duration: 1 }: { delay: 0, duration: 0.5 }}
+          transition={
+            countAnimated < 2
+              ? { delay: 4, duration: 1 }
+              : { delay: 0, duration: 0.5 }
+          }
         >
           <input type="text" placeholder="Name" name="name" />
           <input type="email" placeholder="Email" name="email" />
