@@ -16,8 +16,10 @@ const About = ({ about, socials, education }) => {
                 <li>{point}</li>
               ))}
             </ul>
-            <Link href={socials[0].linkedin} passHref target="_blank">
-              <Connect>Connect on LinkedIN</Connect>
+            <Link href={socials[0].linkedin} passHref>
+              <a target="_blank" rel="noopener noreferrer">
+                <Connect>Connect on LinkedIN</Connect>
+              </a>
             </Link>
           </Description>
           <Education>
@@ -62,10 +64,10 @@ const Description = styled.div`
     font-size: 1.4rem;
     text-align: justify;
   }
-  li{
-    margin:0 0 10px 0; 
+  li {
+    margin: 0 0 10px 0;
   }
-  a{
+  a {
     padding: 0;
     cursor: pointer;
     position: absolute;
