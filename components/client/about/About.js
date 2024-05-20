@@ -16,7 +16,7 @@ const About = ({ about, socials, education }) => {
                 <li>{point}</li>
               ))}
             </ul>
-            <a href={socials[0].linkedin} target="_blank" rel="noreferrer">
+            <a href={socials[0].linkedin} target="_blank" rel="noopener noreferrer">
                 <Connect>Connect on LinkedIN</Connect>
             </a>
           </Description>
