@@ -22,13 +22,13 @@ const Navbar = ({ socials }) => {
           TEJAS GADI
         </motion.span>
         <Socials>
-          <a href={linkedin} target="_blank" rel="noopener noreferrer">
+          <a href="https://linkedin.com/in/tejas-gadi-74a370220/" target="_blank">
             <LinkedinIcon size={36} round />
           </a>
-          <a href={github} target="_blank" rel="noopener noreferrer">
+          <a href="https:/github.com/TejasGadi" target="_blank">
             <GithubIcon size={36} round />
           </a>
-          <a href={email} target="_blank" rel="noopener noreferrer ">
+          <a href="mailto:tvgadi2003@gmail.com" target="_blank">
             <EmailIcon size={36} round />
           </a>
         </Socials>

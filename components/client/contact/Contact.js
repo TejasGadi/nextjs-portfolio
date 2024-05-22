@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import Link from "next/link";
 
 const variants = {
@@ -23,7 +24,33 @@ const Contact = ({ socials }) => {
   const ref = useRef();
   const inView = useInView(ref);
   const [countAnimated, setCountAnimated] = useState(0);
-  console.log(socials);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const formref = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+        formref.current,
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+        }
+      )
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          setSuccess(true);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setError(true);
+        }
+      );
+  };
 
   useEffect(() => {
     if (inView == true) {
@@ -43,13 +70,21 @@ const Contact = ({ socials }) => {
         <motion.h1 variants={variants}>Let's work together</motion.h1>
         <Item variants={variants}>
           <h2>Mail</h2>
-          <span>{socials[0].email}</span>
+          <span>
+            <a
+              href="mailto:tvgadi2003@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {socials[0].email}
+            </a>
+          </span>
         </Item>
         <Item variants={variants}>
           <h2>LinkedIn</h2>
           <span>
             <a
-              href={socials[0].linkedin}
+              href="https://linkedin.com/in/tejas-gadi-74a370220/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -94,6 +129,8 @@ const Contact = ({ socials }) => {
           </PhoneSVG>
         )}
         <motion.form
+          ref={formref}
+          onSubmit={sendEmail}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={
@@ -102,10 +139,12 @@ const Contact = ({ socials }) => {
               : { delay: 0, duration: 0.5 }
           }
         >
-          <input type="text" placeholder="Name" name="name" />
-          <input type="email" placeholder="Email" name="email" />
+          <input type="text" required placeholder="Name" name="name" />
+          <input type="email" required placeholder="Email" name="email" />
           <textarea rows={8} placeholder="Message" name="message" />
           <button>Submit</button>
+          {success && "Success"}
+          {error && "Error"}
         </motion.form>
       </FormContainer>
     </ContactContainer>
@@ -165,6 +204,7 @@ const Item = styled(motion.div)``;
 const PhoneSVG = styled(motion.div)`
   stroke: orange;
   position: absolute;
+  z-index: -1;
 `;
 
 export default Contact;
